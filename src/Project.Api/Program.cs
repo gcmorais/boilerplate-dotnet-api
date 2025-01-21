@@ -2,12 +2,13 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Project.Infrastructure.Services;
+using Project.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Persistence and Application Settings
 builder.Services.ConfigurePersistenceApp(builder.Configuration);
-//builder.Services.ConfigureApplicationApp();
+builder.Services.ConfigureApplicationApp();
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();

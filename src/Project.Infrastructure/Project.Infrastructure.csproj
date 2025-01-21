@@ -17,10 +17,15 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="SendGrid" Version="9.29.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Project.Application\Project.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Templates\Email\" />
   </ItemGroup>
 
 </Project>

@@ -1262,6 +1262,22 @@
           }
         }
       },
+      "Serilog.Sinks.Async/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Serilog": "4.1.0"
+        },
+        "compile": {
+          "lib/net8.0/Serilog.Sinks.Async.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Sinks.Async.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Serilog.Sinks.Console/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -1933,6 +1949,7 @@
           "Project.Domain": "1.0.0",
           "Serilog.AspNetCore": "9.0.0",
           "Serilog.Exceptions": "8.4.0",
+          "Serilog.Sinks.Async": "2.1.0",
           "System.IdentityModel.Tokens.Jwt": "8.0.1"
         },
         "compile": {
@@ -4203,6 +4220,29 @@
         "lib/netstandard2.0/Serilog.Settings.Configuration.xml",
         "serilog.settings.configuration.9.0.0.nupkg.sha512",
         "serilog.settings.configuration.nuspec"
+      ]
+    },
+    "Serilog.Sinks.Async/2.1.0": {
+      "sha512": "SnmRknWsSMgyo9wDXeZZCqSp48kkQYy44taSM6vcpxfiRICzSf09oLKEmVr0RCwQnfd8mJQ2WNN6nvhqf0RowQ==",
+      "type": "package",
+      "path": "serilog.sinks.async/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net462/Serilog.Sinks.Async.dll",
+        "lib/net462/Serilog.Sinks.Async.xml",
+        "lib/net471/Serilog.Sinks.Async.dll",
+        "lib/net471/Serilog.Sinks.Async.xml",
+        "lib/net6.0/Serilog.Sinks.Async.dll",
+        "lib/net6.0/Serilog.Sinks.Async.xml",
+        "lib/net8.0/Serilog.Sinks.Async.dll",
+        "lib/net8.0/Serilog.Sinks.Async.xml",
+        "lib/netstandard2.0/Serilog.Sinks.Async.dll",
+        "lib/netstandard2.0/Serilog.Sinks.Async.xml",
+        "serilog-sink-nuget.png",
+        "serilog.sinks.async.2.1.0.nupkg.sha512",
+        "serilog.sinks.async.nuspec"
       ]
     },
     "Serilog.Sinks.Console/6.0.0": {

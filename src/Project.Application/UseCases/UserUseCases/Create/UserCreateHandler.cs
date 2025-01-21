@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.Extensions.Configuration;
 using Project.Application.Interfaces;
 using Project.Application.Models;
 using Project.Application.UseCases.UserUseCases.Common;
@@ -15,18 +16,21 @@ namespace Project.Application.UseCases.UserUseCases.Create
         private readonly IMapper _mapper;
         private readonly ICreateVerifyHash _createVerifyHash;
         private readonly IEmailService _emailService;
+        private readonly string _confirmationLink;
         public UserCreateHandler(
             IUserRepository userRepository,
             IUnitOfWork unitOfWork,
             IMapper mapper,
             ICreateVerifyHash createVerifyHash,
-            IEmailService emailService)
+            IEmailService emailService,
+            IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
             _userRepository = userRepository;
             _mapper = mapper;
             _createVerifyHash = createVerifyHash;
             _emailService = emailService;
+            _confirmationLink = configuration["Links:ConfirmationLink"];
         }
         public async Task<ResponseModel<UserResponse>> Handle(UserCreateRequest request, CancellationToken cancellationToken)
         {
@@ -50,7 +54,8 @@ namespace Project.Application.UseCases.UserUseCases.Create
             var emailTemplatePath = Path.Combine("Infrastructure", "Templates", "Email", "EmailConfirmationTemplate.html");
             var emailTemplate = await File.ReadAllTextAsync(emailTemplatePath, cancellationToken);
 
-            var confirmationLink = $"https://yourapp.com/confirm-email?token={user.EmailConfirmationToken}";
+            var confirmationLink = $"{_confirmationLink}{user.EmailConfirmationToken}";
+
             var emailBody = emailTemplate
                 .Replace("{{UserName}}", user.Fullname)
                 .Replace("{{ConfirmationLink}}", confirmationLink);

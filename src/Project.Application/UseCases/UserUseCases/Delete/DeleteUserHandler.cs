@@ -17,7 +17,7 @@ namespace Project.Application.UseCases.UserUseCases.Delete
 
         public async Task<ResponseModel<string>> Handle(DeleteUserRequest request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.Get(request.id, cancellationToken);
+            var user = await _userRepository.GetById(request.id, cancellationToken);
 
             if (user == null) throw new InvalidOperationException("User not found.");
 
