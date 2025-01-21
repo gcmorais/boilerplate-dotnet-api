@@ -6,6 +6,7 @@ namespace Project.Domain.Interfaces
     {
         Task Create(T entity);
         Task Update(T entity);
+        Task Delete(T entity);
         Task<T> GetById(Guid id, CancellationToken cancellationToken);
         Task<List<T>> GetAll(CancellationToken cancellationToken);
     }
