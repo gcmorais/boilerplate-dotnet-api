@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Project.Application.Interfaces;
+using Project.Domain.Entities;
 using Project.Domain.Interfaces;
 
 namespace Project.Application.UseCases.AuthUseCases.Login
@@ -10,13 +11,15 @@ namespace Project.Application.UseCases.AuthUseCases.Login
         private readonly ITokenService _tokenService;
         private readonly ICreateVerifyHash _serviceHash;
         private readonly IEmailService _emailService;
+        private readonly IRefreshTokenRepository _refreshTokenRepository;
 
-        public LoginHandler(IUserRepository userRepository, ITokenService tokenService, ICreateVerifyHash serviceHash, IEmailService emailService)
+        public LoginHandler(IUserRepository userRepository, ITokenService tokenService, ICreateVerifyHash serviceHash, IEmailService emailService, IRefreshTokenRepository refreshTokenRepository)
         {
             _userRepository = userRepository;
             _tokenService = tokenService;
             _serviceHash = serviceHash;
             _emailService = emailService;
+            _refreshTokenRepository = refreshTokenRepository;
         }
 
         public async Task<LoginResponse> Handle(LoginUserRequest request, CancellationToken cancellationToken)
@@ -28,7 +31,6 @@ namespace Project.Application.UseCases.AuthUseCases.Login
                 throw new UnauthorizedAccessException("Invalid username or password.");
             }
 
-
             if (user.IsTwoFactorEnabled)
             {
                 user.GenerateTwoFactorCode();
@@ -39,8 +41,27 @@ namespace Project.Application.UseCases.AuthUseCases.Login
                 return new LoginResponse { RequiresTwoFactor = true };
             }
 
+            // Generate tokens
             var token = _tokenService.GenerateToken(user, user.Roles);
-            return new LoginResponse { Token = token };
+            var refreshToken = new RefreshToken
+            {
+                Id = Guid.NewGuid(),
+                Token = Guid.NewGuid().ToString(),
+                UserId = user.Id,
+                ExpiryDate = DateTime.UtcNow.AddDays(30),
+                IsRevoked = false,
+                CreatedAt = DateTime.UtcNow,
+            };
+
+            // Save the Refresh Token in the db
+            await _refreshTokenRepository.CreateAsync(refreshToken, cancellationToken);
+
+            return new LoginResponse
+            {
+                Token = token,
+                RefreshToken = refreshToken.Token
+            };
         }
+
     }
 }

@@ -19,6 +19,7 @@ namespace Project.Infrastructure.Services
 
             // repositories
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
             // services
             services.AddScoped<ITokenService, TokenService>();

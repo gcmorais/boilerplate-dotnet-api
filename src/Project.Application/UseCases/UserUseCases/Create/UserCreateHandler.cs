@@ -50,18 +50,18 @@ namespace Project.Application.UseCases.UserUseCases.Create
             _userRepository.Create(user);
             await _unitOfWork.Commit(cancellationToken);
 
-            // Upload and customize the email template
-            var emailTemplatePath = Path.Combine("Infrastructure", "Templates", "Email", "EmailConfirmationTemplate.html");
-            var emailTemplate = await File.ReadAllTextAsync(emailTemplatePath, cancellationToken);
+            //// Upload and customize the email template
+            //var emailTemplatePath = Path.Combine("Infrastructure", "Templates", "Email", "EmailConfirmationTemplate.html");
+            //var emailTemplate = await File.ReadAllTextAsync(emailTemplatePath, cancellationToken);
 
-            var confirmationLink = $"{_confirmationLink}{user.EmailConfirmationToken}";
+            //var confirmationLink = $"{_confirmationLink}{user.EmailConfirmationToken}";
 
-            var emailBody = emailTemplate
-                .Replace("{{UserName}}", user.Fullname)
-                .Replace("{{ConfirmationLink}}", confirmationLink);
+            //var emailBody = emailTemplate
+            //    .Replace("{{UserName}}", user.Fullname)
+            //    .Replace("{{ConfirmationLink}}", confirmationLink);
 
-            // Send the email
-            await _emailService.SendEmailAsync(user.Email, "Email Confirmation", emailBody);
+            //// Send the email
+            //await _emailService.SendEmailAsync(user.Email, "Email Confirmation", emailBody);
 
             // Return reply
             var userResponse = _mapper.Map<UserResponse>(user);

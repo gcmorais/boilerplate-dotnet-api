@@ -79,6 +79,32 @@
   },
   {
     "ContainingType": "Project.Api.Controllers.AuthController",
+    "Method": "RefreshToken",
+    "RelativePath": "Auth/refresh-token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Project.Application.UseCases.AuthUseCases.RefreshTokens.RefreshTokenRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Project.Application.UseCases.AuthUseCases.Login.LoginResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Project.Api.Controllers.AuthController",
     "Method": "ResetPassword",
     "RelativePath": "Auth/reset-password",
     "HttpMethod": "POST",

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Project.Application.Models;
 using Project.Application.UseCases.AuthUseCases.Enable2FA;
 using Project.Application.UseCases.AuthUseCases.Login;
+using Project.Application.UseCases.AuthUseCases.RefreshTokens;
 using Project.Application.UseCases.AuthUseCases.SetNewPassword;
 using Project.Application.UseCases.AuthUseCases.Verify2FA;
 
@@ -24,6 +25,17 @@ namespace Project.Api.Controllers
         public async Task<ActionResult<LoginResponse>> Login(LoginUserRequest request, CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(request, cancellationToken);
+            return Ok(response);
+        }
+
+        [HttpPost("refresh-token")]
+        public async Task<ActionResult<LoginResponse>> RefreshToken([FromBody] RefreshTokenRequest request, CancellationToken cancellationToken)
+        {
+            var response = await _mediator.Send(new RefreshTokenCommand
+            {
+                RefreshToken = request.Token,
+            }, cancellationToken);
+
             return Ok(response);
         }
 
