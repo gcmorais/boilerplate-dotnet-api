@@ -37,5 +37,18 @@ namespace Project.Infrastructure.Repositories
                 await _context.SaveChangesAsync(cancellationToken);
             }
         }
+
+        public async Task<IEnumerable<RefreshToken>> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken)
+        {
+            return await _context.RefreshTokens
+                .Where(rt => rt.UserId == userId && !rt.IsRevoked)
+                .ToListAsync(cancellationToken);
+        }
+
+        public async Task SaveChangesAsync(CancellationToken cancellationToken)
+        {
+            await _context.SaveChangesAsync(cancellationToken);
+        }
     }
+
 }

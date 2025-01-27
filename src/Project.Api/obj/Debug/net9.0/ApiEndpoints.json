@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "Project.Api.Controllers.AdminController",
+    "Method": "RevokeTokens",
+    "RelativePath": "Admin/revoke-tokens/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Project.Api.Controllers.AuthController",
     "Method": "EnableTwoFactorAuthentication",
     "RelativePath": "Auth/enable-2fa",
