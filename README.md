@@ -12,6 +12,7 @@ A clean and modular boilerplate for building RESTful APIs using .NET, designed t
 - **Validation**: Integrated validation using FluentValidation.
 - **Unit Testing**: Ready-to-use test setup with xUnit and Moq.
 - **JWT Authentication**: Secure APIs with JSON Web Tokens.
+- **Health Check**: Endpoint that checks the health of the application, including the status of the database and other critical services. Returns whether the application is working correctly or if there are errors to be resolved.
 
 ## Prerequisites
 
