@@ -17,6 +17,10 @@ namespace Project.Infrastructure.Services
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            // health database check
+            services.AddHealthChecks()
+            .AddSqlServer(connectionString, name: "Database");
+
             // repositories
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();

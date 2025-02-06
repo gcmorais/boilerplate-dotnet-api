@@ -29,6 +29,10 @@ namespace Project.Application.Services
             // config GlobalExceptionHandler:
             services.AddExceptionHandler<GlobalExceptionHandler>();
             services.AddProblemDetails();
+
+            // health application
+            services.AddHealthChecks()
+            .AddCheck("Application", new ApplicationHealthCheck());
         }
     }
 }

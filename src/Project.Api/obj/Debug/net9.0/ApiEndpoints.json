@@ -1,6 +1,16 @@
 [
   {
     "ContainingType": "Project.Api.Controllers.AdminController",
+    "Method": "HealthCheck",
+    "RelativePath": "Admin/healthcheck",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Api.Controllers.AdminController",
     "Method": "RevokeTokens",
     "RelativePath": "Admin/revoke-tokens/{userId}",
     "HttpMethod": "POST",
