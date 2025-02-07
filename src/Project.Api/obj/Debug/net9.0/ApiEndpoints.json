@@ -28,14 +28,14 @@
   {
     "ContainingType": "Project.Api.Controllers.AdminController",
     "Method": "RevokeTokens",
-    "RelativePath": "Admin/revoke-tokens/{userId}",
+    "RelativePath": "Admin/revoke-tokens",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.Guid",
+        "Name": "request",
+        "Type": "Project.Application.UseCases.AdminUseCases.RevokeTokens.RevokeTokensRequest",
         "IsRequired": true
       }
     ],

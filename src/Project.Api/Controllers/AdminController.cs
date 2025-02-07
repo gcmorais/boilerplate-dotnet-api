@@ -20,10 +20,10 @@ namespace Project.Api.Controllers
             _healthCheckService = healthCheckService;
         }
 
-        [HttpPost("revoke-tokens/{userId}")]
-        public async Task<IActionResult> RevokeTokens([FromRoute] Guid userId, CancellationToken cancellationToken)
+        [HttpPost("revoke-tokens")]
+        public async Task<IActionResult> RevokeTokens([FromBody] RevokeTokensRequest request, CancellationToken cancellationToken)
         {
-            await _mediator.Send(new RevokeTokensCommand { UserId = userId }, cancellationToken);
+            await _mediator.Send(request, cancellationToken);
             return NoContent();
         }
 

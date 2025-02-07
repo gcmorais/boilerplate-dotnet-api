@@ -3,7 +3,7 @@ using Project.Domain.Interfaces;
 
 namespace Project.Application.UseCases.AdminUseCases.RevokeTokens
 {
-    public class RevokeTokensHandler : IRequestHandler<RevokeTokensCommand, Unit>
+    public class RevokeTokensHandler : IRequestHandler<RevokeTokensRequest, Unit>
     {
         private readonly IRefreshTokenRepository _refreshTokenRepository;
 
@@ -12,7 +12,7 @@ namespace Project.Application.UseCases.AdminUseCases.RevokeTokens
             _refreshTokenRepository = refreshTokenRepository;
         }
 
-        public async Task<Unit> Handle(RevokeTokensCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(RevokeTokensRequest request, CancellationToken cancellationToken)
         {
             var tokens = await _refreshTokenRepository.GetByUserIdAsync(request.UserId, cancellationToken);
 

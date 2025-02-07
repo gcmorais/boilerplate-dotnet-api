@@ -2,7 +2,7 @@
 
 namespace Project.Application.UseCases.AdminUseCases.RevokeTokens
 {
-    public class RevokeTokensCommand : IRequest<Unit>
+    public class RevokeTokensRequest : IRequest<Unit>
     {
         public Guid UserId { get; set; }
     }
