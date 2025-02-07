@@ -181,7 +181,6 @@ D:\Repos\boilerplate-dotnet-api\src\Project.Api\bin\Debug\net9.0\Project.Applica
 D:\Repos\boilerplate-dotnet-api\src\Project.Api\bin\Debug\net9.0\Project.Infrastructure.pdb
 D:\Repos\boilerplate-dotnet-api\src\Project.Api\bin\Debug\net9.0\Project.Domain.pdb
 D:\Repos\boilerplate-dotnet-api\src\project.Api\obj\Debug\net9.0\Project.Api.MvcApplicationPartsAssemblyInfo.cs
-D:\Repos\boilerplate-dotnet-api\src\Project.Api\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\Repos\boilerplate-dotnet-api\src\Project.Api\bin\Debug\net9.0\HealthChecks.SqlServer.dll
 D:\Repos\boilerplate-dotnet-api\src\Project.Api\bin\Debug\net9.0\de\Microsoft.Data.SqlClient.resources.dll
 D:\Repos\boilerplate-dotnet-api\src\Project.Api\bin\Debug\net9.0\es\Microsoft.Data.SqlClient.resources.dll
@@ -196,3 +195,4 @@ D:\Repos\boilerplate-dotnet-api\src\Project.Api\bin\Debug\net9.0\zh-Hant\Microso
 D:\Repos\boilerplate-dotnet-api\src\Project.Api\bin\Debug\net9.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
 D:\Repos\boilerplate-dotnet-api\src\Project.Api\bin\Debug\net9.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
 D:\Repos\boilerplate-dotnet-api\src\Project.Api\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+D:\Repos\boilerplate-dotnet-api\src\Project.Api\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

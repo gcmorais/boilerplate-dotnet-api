@@ -50,6 +50,8 @@ namespace Project.Infrastructure.Migrations
                     IsDeletionRequested = table.Column<bool>(type: "bit", nullable: false),
                     DeletionRequestDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     DeletionScheduledDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    IsUserBanned = table.Column<bool>(type: "bit", nullable: false),
+                    UserBannedUntil = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     DateCreated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     DateUpdated = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },

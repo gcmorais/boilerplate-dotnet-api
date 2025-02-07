@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Project.Application.UseCases.AdminUseCases.BanUser;
 using Project.Application.UseCases.AdminUseCases.RevokeTokens;
+using Project.Application.UseCases.AdminUseCases.UnbanUser;
 
 namespace Project.Api.Controllers
 {
@@ -23,6 +25,20 @@ namespace Project.Api.Controllers
         {
             await _mediator.Send(new RevokeTokensCommand { UserId = userId }, cancellationToken);
             return NoContent();
+        }
+
+        [HttpPost("ban-user")]
+        public async Task<IActionResult> BanUser([FromBody] BanUserRequest request, CancellationToken cancellationToken)
+        {
+            var response = await _mediator.Send(request, cancellationToken);
+            return Ok(response);
+        }
+
+        [HttpPost("unban-user")]
+        public async Task<IActionResult> UnbanUser([FromBody] UnbanUserRequest request, CancellationToken cancellationToken)
+        {
+            var response = await _mediator.Send(request, cancellationToken);
+            return Ok(response);
         }
 
         [HttpGet("healthcheck")]

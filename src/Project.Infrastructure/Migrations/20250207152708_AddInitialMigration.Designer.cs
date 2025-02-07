@@ -12,7 +12,7 @@ using Project.Infrastructure.Context;
 namespace Project.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250124191417_AddInitialMigration")]
+    [Migration("20250207152708_AddInitialMigration")]
     partial class AddInitialMigration
     {
         /// <inheritdoc />
@@ -101,6 +101,9 @@ namespace Project.Infrastructure.Migrations
                     b.Property<bool>("IsTwoFactorEnabled")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsUserBanned")
+                        .HasColumnType("bit");
+
                     b.Property<string>("PasswordResetToken")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -120,6 +123,9 @@ namespace Project.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTimeOffset?>("TwoFactorCodeExpiry")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset?>("UserBannedUntil")
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("UserName")

@@ -29,6 +29,10 @@
         public DateTimeOffset? DeletionRequestDate { get; private set; }
         public DateTimeOffset? DeletionScheduledDate { get; private set; }
 
+        // Ban User
+        public bool IsUserBanned { get; private set; }
+        public DateTimeOffset? UserBannedUntil { get; private set; }
+
         private User() { }
         public User(string fullname, string username, string email, byte[] hashPassword, byte[] saltPassword) : this()
         {
@@ -147,6 +151,18 @@
         public bool ValidateTwoFactorCode(string code)
         {
             return TwoFactorCode == code && TwoFactorCodeExpiry > DateTimeOffset.UtcNow;
+        }
+
+        // Ban & Unban methods
+        public void BanUser(DateTimeOffset? until = null)
+        {
+            IsUserBanned = true;
+            UserBannedUntil = until;
+        }
+        public void UnbanUser()
+        {
+            IsUserBanned = false;
+            UserBannedUntil = null;
         }
     }
 }

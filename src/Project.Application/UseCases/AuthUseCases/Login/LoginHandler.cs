@@ -26,6 +26,11 @@ namespace Project.Application.UseCases.AuthUseCases.Login
         {
             var user = await _userRepository.GetByEmail(request.Email, cancellationToken);
 
+            if (user.IsUserBanned && (user.UserBannedUntil == null || user.UserBannedUntil > DateTimeOffset.UtcNow))
+            {
+                throw new UnauthorizedAccessException("Your account has been banned.");
+            }
+
             if (user == null || !_serviceHash.PasswordVerify(request.Password, user.HashPassword, user.SaltPassword))
             {
                 throw new UnauthorizedAccessException("Invalid username or password.");

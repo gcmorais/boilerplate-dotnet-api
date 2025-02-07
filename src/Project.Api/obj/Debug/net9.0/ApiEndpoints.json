@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "Project.Api.Controllers.AdminController",
+    "Method": "BanUser",
+    "RelativePath": "Admin/ban-user",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Project.Application.UseCases.AdminUseCases.BanUser.BanUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Api.Controllers.AdminController",
     "Method": "HealthCheck",
     "RelativePath": "Admin/healthcheck",
     "HttpMethod": "GET",
@@ -20,6 +36,22 @@
       {
         "Name": "userId",
         "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Api.Controllers.AdminController",
+    "Method": "UnbanUser",
+    "RelativePath": "Admin/unban-user",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Project.Application.UseCases.AdminUseCases.UnbanUser.UnbanUserRequest",
         "IsRequired": true
       }
     ],
