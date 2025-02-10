@@ -6,7 +6,7 @@ using Project.Domain.Interfaces;
 
 namespace Project.Application.UseCases.AuthUseCases.RefreshTokens
 {
-    public class RefreshTokenHandler : IRequestHandler<RefreshTokenCommand, LoginResponse>
+    public class RefreshTokenHandler : IRequestHandler<RefreshTokenRequest, LoginResponse>
     {
         private readonly IRefreshTokenRepository _refreshTokenRepository;
         private readonly IUserRepository _userRepository;
@@ -19,9 +19,9 @@ namespace Project.Application.UseCases.AuthUseCases.RefreshTokens
             _tokenService = tokenService;
         }
 
-        public async Task<LoginResponse> Handle(RefreshTokenCommand request, CancellationToken cancellationToken)
+        public async Task<LoginResponse> Handle(RefreshTokenRequest request, CancellationToken cancellationToken)
         {
-            var refreshToken = await _refreshTokenRepository.GetByTokenAsync(request.RefreshToken, cancellationToken);
+            var refreshToken = await _refreshTokenRepository.GetByTokenAsync(request.Token, cancellationToken);
 
             if (refreshToken == null || refreshToken.IsRevoked || refreshToken.ExpiryDate <= DateTime.UtcNow)
             {

@@ -31,9 +31,9 @@ namespace Project.Api.Controllers
         [HttpPost("refresh-token")]
         public async Task<ActionResult<LoginResponse>> RefreshToken([FromBody] RefreshTokenRequest request, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new RefreshTokenCommand
+            var response = await _mediator.Send(new RefreshTokenRequest
             {
-                RefreshToken = request.Token,
+                Token = request.Token,
             }, cancellationToken);
 
             return Ok(response);
