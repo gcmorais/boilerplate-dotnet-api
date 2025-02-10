@@ -15,22 +15,25 @@ namespace Project.Application.UseCases.UserUseCases.Create
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly ICreateVerifyHash _createVerifyHash;
-        private readonly IEmailService _emailService;
-        private readonly string _confirmationLink;
+        //private readonly IEmailService _emailService;
+        //private readonly string _confirmationLink;
+
+
         public UserCreateHandler(
             IUserRepository userRepository,
             IUnitOfWork unitOfWork,
             IMapper mapper,
-            ICreateVerifyHash createVerifyHash,
-            IEmailService emailService,
-            IConfiguration configuration)
+            ICreateVerifyHash createVerifyHash
+            //IEmailService emailService,
+            //IConfiguration configuration
+            )
         {
             _unitOfWork = unitOfWork;
             _userRepository = userRepository;
             _mapper = mapper;
             _createVerifyHash = createVerifyHash;
-            _emailService = emailService;
-            _confirmationLink = configuration["Links:ConfirmationLink"];
+            //_emailService = emailService;
+            //_confirmationLink = configuration["Links:ConfirmationLink"];
         }
         public async Task<ResponseModel<UserResponse>> Handle(UserCreateRequest request, CancellationToken cancellationToken)
         {
