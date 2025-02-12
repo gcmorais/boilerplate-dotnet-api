@@ -40,11 +40,16 @@ namespace Application.UnitTests.UseCases.AuthUseCases
             );
 
             user.GeneratePasswordResetToken();
+            request.Token = user.PasswordResetToken;
 
             _userRepositoryMock.Setup(r => r.GetByPasswordResetToken(request.Token, cancellationToken))
                 .ReturnsAsync(user);
-            _createVerifyHashMock.Setup(h => h.CreateHashPassword(request.NewPassword, out It.Ref<byte[]>.IsAny, out It.Ref<byte[]>.IsAny));
 
+            _createVerifyHashMock.Setup(h => h.CreateHashPassword(
+                request.NewPassword,
+                out It.Ref<byte[]>.IsAny,
+                out It.Ref<byte[]>.IsAny
+            ));
 
             var handler = new SetNewPasswordHandler(_userRepositoryMock.Object, _createVerifyHashMock.Object);
 
@@ -57,6 +62,7 @@ namespace Application.UnitTests.UseCases.AuthUseCases
             response.Data.ShouldBe("Your password has been successfully updated.");
             _userRepositoryMock.Verify(r => r.Update(user), Times.Once);
         }
+
 
         [Fact]
         public async Task Handle_InvalidToken_ThrowsInvalidOperationException()
