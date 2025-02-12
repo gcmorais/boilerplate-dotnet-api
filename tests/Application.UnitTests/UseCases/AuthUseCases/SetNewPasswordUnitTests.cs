@@ -1,6 +1,5 @@
 ﻿using AutoFixture;
 using Moq;
-using Project.Application.Models;
 using Project.Application.UseCases.AuthUseCases.SetNewPassword;
 using Project.Domain.Entities;
 using Project.Domain.Interfaces;
